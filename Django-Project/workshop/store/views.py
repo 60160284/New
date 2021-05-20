@@ -53,9 +53,18 @@ def upload_workspaceView(request):
     uploads=UploadFile.objects.all().filter(user=request.user)
     return render(request,'uploads/upload_workspace.html',{'uploads':uploads})
     
-def upload_updateView(request):
-    
-    return render(request, 'uploads/upload_update.html')
+
+
+def upload_updateView(request,pk):
+    upload = UploadFile.objects.get(id=pk)
+    form = UploadFileForm(instance=upload)
+    context={
+        'form':form
+    }
+    return render(request, 'uploads/upload_update.html', context)
+
+
+
 
 def upload_deleteView(request, pk):   
     upload= UploadFile.objects.get(id=pk)

@@ -42,7 +42,7 @@ urlpatterns = [
     path('upload/workspace/',views.upload_workspaceView,name='workspace'),
 
 
-    path('upload/workspace/update',views.upload_updateView,name='workspaceUpdate'),
+    path('upload/workspace/update/<str:pk>/',views.upload_updateView,name='workspaceUpdate'),
 
 
     path('upload/workspace/delete/<str:pk>/',views.upload_deleteView,name='workspaceDelete'),
