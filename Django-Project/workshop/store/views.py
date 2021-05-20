@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render,get_object_or_404,redirect
 
 
@@ -29,7 +30,6 @@ def search(request):
     return render(request,'index.html',{'uploads':uploads})
 
 @login_required
-
 def upload_view(request):
     form = UploadFileForm(request.POST or None, request.FILES or None)
     if request.method =='POST':
@@ -54,16 +54,23 @@ def upload_workspaceView(request):
     return render(request,'uploads/upload_workspace.html',{'uploads':uploads})
     
 def upload_updateView(request):
+    
     return render(request, 'uploads/upload_update.html')
 
-def upload_deleteView(request, pk):
-    uploads = get_object_or_404(UploadFile, pk=pk)
-
-
-    context = {
-        'uploads':uploads
+def upload_deleteView(request, pk):   
+    upload= UploadFile.objects.get(id=pk)
+    
+    if request.method =='POST':
+        upload.delete()
+        messages.success(request,'ลบไฟล์สำเร็จ')
+        return redirect('workspace')
+        
+   
+    context={
+        'upload': upload
     }
-    return render(request, 'uploads/upload_delete.html',context)
+
+    return render(request, 'uploads/upload_delete.html', context)
 
 
 
@@ -209,10 +216,11 @@ def signOutView(request):
 
 @login_required
 def profileView(request):
-    model = Profile
+    u_form = UserUpdateForm(request.POST or None)
+    p_form = ProfileUpdateForm(request.POST or None,request.FILES or None)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        p_form = ProfileUpdateForm(request.POST,request.FILES)
         
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()

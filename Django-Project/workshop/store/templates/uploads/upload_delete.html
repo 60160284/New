@@ -13,20 +13,34 @@
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
             </svg></h2>
+        <hr>
 
-        <form method="post" enctype="multipart/form-data">
+
+        <form action="{% url 'workspaceDelete' upload.id  %}" method="POST">
 
             {% csrf_token %}
-            {{uploads}}
+            <div class="card" style="width: 18rem;">
+                <img src="{{upload.image.url}}" alt="Placeholder image" class="img-thumbnail"">
+              
+                <div class="card-body">
+                    <p>{{upload}}</p>
+                    <p class="card-title">คุณต้องการลบไฟล์นี้ใช่หรือไม่?</p>
+                    
+                    <a class="btn btn-outline-secondary"  href="{% url 'workspace' %}">ยกเลิก</a>
 
-            <input type="submit" class="btn btn-danger" value="ลบ">
+                    <input class="btn btn-danger" type="submit" name="Confirm" value="ลบไฟล์">
+                </div>
+
+                
+            </div>
 
 
+           
+           
+           
         </form>
 
     </div>
 
 </section>
 {% endblock %}
-
-

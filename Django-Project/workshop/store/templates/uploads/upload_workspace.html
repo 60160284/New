@@ -20,10 +20,13 @@
                                 <p class="title is-6">{{upload.name}}</p>
                             </a>
                             <div class="content has-text-right">
-                                <a class="button is-small is-primary is-outlined" href="{% url 'workspaceUpdate'%}"><i
-                                        class="fa fa-edit"></i></a>
+                                
+                                <a class="button is-small is-primary is-outlined" 
+                                href="{% url 'workspaceUpdate'%}"><i class="fa fa-edit"></i></a>
                                 <a class="button is-small is-danger is-outlined"
-                                    href="{% url 'workspaceDelete'%}""><i class=" fa fa-trash"></i></a>
+                                    href="{% url 'workspaceDelete' upload.id %}""><i class=" fa fa-trash"></i></a>
+                            
+                                  
                             </div>
                         </div>
                     </div>

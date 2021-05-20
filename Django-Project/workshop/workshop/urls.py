@@ -39,9 +39,15 @@ urlpatterns = [
 
 
     path('upload/',views.upload_view, name="uploadview"),
-    path('upload/workspace',views.upload_workspaceView,name='workspace'),
+    path('upload/workspace/',views.upload_workspaceView,name='workspace'),
+
+
     path('upload/workspace/update',views.upload_updateView,name='workspaceUpdate'),
-    path('upload/workspace/delete',views.upload_deleteView,name='workspaceDelete'),
+
+
+    path('upload/workspace/delete/<str:pk>/',views.upload_deleteView,name='workspaceDelete'),
+
+
     path('upload/<slug:category_slug>/<slug:uploadfile_slug>',views.uploadProductPage,name="uploadProductDetail"),
 
     path('account/create',views.SignUpView, name="signUp"),

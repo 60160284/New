@@ -6,6 +6,7 @@ $bg-space:#767e87;
 @import "https://fonts.googleapis.com/css?family=Pridi";
 * {
   font-family: "Pridi";
+  
 }
 
 section.bg {
@@ -97,6 +98,7 @@ label.naccount {
 body {
   /*--header-height: 50px;*/
   margin: var(--header-height) 0 0 0;
+  
 }
 
 .preload {
