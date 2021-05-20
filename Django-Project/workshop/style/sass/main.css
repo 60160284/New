@@ -1,0 +1,185 @@
+@import "https://fonts.googleapis.com/css?family=Pridi";
+* {
+  font-family: "Pridi"; }
+
+section.bg {
+  background: #eaf4ff; }
+
+.button.Sdy {
+  background: #303b47;
+  color: #ffffff; }
+
+.button.home-filter {
+  display: inline; }
+
+.container.Sdy {
+  margin: 25px 50px 75px 50px;
+  border-radius: 5px;
+  line-height: 24px; }
+
+.input.Sdy {
+  font-size: 14px;
+  border: 1px solid;
+  width: 500px; }
+
+.input.up-sdy {
+  font-size: 14px;
+  background: #767e87;
+  border: none;
+  color: #ffffff; }
+
+textarea.tarea-up-sdy {
+  font-size: 14px;
+  background: #767e87;
+  border: none;
+  color: #ffffff;
+  border-radius: 5px; }
+
+.sub.up-sdy {
+  font-size: 16px;
+  color: #ffffff;
+  padding-bottom: 0.5rem; }
+
+label.naccount {
+  float: right; }
+
+.columns.Sdy {
+  margin: 100px; }
+
+.columns.home-sdy {
+  padding: 2rem; }
+
+.columns.home-filter {
+  display: none; }
+
+.columns.up-sdy {
+  height: calc(100vh - (3.25rem - 0.75rem)); }
+
+.subtitle.Sdy {
+  color: #ffffff; }
+
+.Sdy-img {
+  background-color: blanchedalmond;
+  border-radius: 50%; }
+
+.navbar.home {
+  background: #303b47; }
+
+body {
+  /*--header-height: 50px;*/
+  margin: var(--header-height) 0 0 0; }
+
+.preload {
+  transition: none !important; }
+
+.header {
+  position: sticky;
+  background: #303b47;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  align-items: center; }
+
+.pagination-link.color {
+  background: #ffffff; }
+
+.header__button {
+  width: var(--header-height);
+  flex-shrink: 0;
+  background: none;
+  outline: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer; }
+
+.nav__links {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  height: 100vh;
+  width: 250px;
+  background: #ffffff;
+  transform: translateX(-250px); }
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 12px 15px;
+  background: transform 0.2s; }
+
+.nav__title {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 12px 15px;
+  background: #eaf4ff; }
+
+.nav--open .nav__links {
+  transform: translateX(0);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); }
+
+.nav__link--active {
+  color: #009578; }
+
+.nav__link--active,
+.nav__link:hover {
+  background: #eeeeee; }
+
+.nav__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s; }
+
+.nav--open .nav__overlay {
+  visibility: visible;
+  opacity: 1; }
+
+.search-box {
+  position: relative;
+  display: flex;
+  top: 0; }
+
+.searchTerm {
+  width: 300px;
+  border: 3px solid #303b47;
+  border-right: none;
+  padding: 5px;
+  border-radius: 3px 3px 3px 3px;
+  outline: none;
+  font-family: Pridi; }
+
+.searchTerm.searchTerm:focus {
+  color: #000; }
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #303b47;
+  background: #303b47;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer; }
+
+.card-content.home-sdy {
+  background: #f0f0f0; }
+
+i.name {
+  color: #df8c10; }
+
+/*# sourceMappingURL=main.css.map */
+
+/*# sourceMappingURL=main.css.map */

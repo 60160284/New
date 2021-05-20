@@ -1,0 +1,62 @@
+{% extends 'layout-forms.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section class="section">
+    <div class="container p-5">
+        <h2 class="font-weight-bold mt-3">บัญชีผู้ใช้</h2>
+        <hr>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+
+
+
+                <div class="col md-6">
+                    <div class="col-12 p-2">
+
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">โปรไฟล์ของฉัน</legend>
+
+                            <div class="col p-2">
+                               
+                                <img src="{{ user.profile.profile_image.url }}" class="img-fluid" alt="Profile image">
+                              
+                            </div>
+
+                        </fieldset>
+                        <div class="row">
+                            {{ p_form |crispy }}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col md-6">
+                    <div class="col-12 p-2">
+
+                        <fieldset class="form-group">
+                            <legend class="border-bottom mb-4">ข้อมูลบัญชีผู้ใช้</legend>
+                            {% csrf_token %}
+                            {{ u_form |crispy }}
+
+
+                        </fieldset>
+                        <div class="row">
+                            <div class="form-group  col-6">
+                                <button class="btn btn-outline-info" type="submit">แก้ไข</button>
+                            </div>
+                            <div class="form-group  col-6">
+                                <a class="btn btn-danger" style="color: cornsilk;" href="{% url 'home' %}">ยกเลิก</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+        </form>
+
+    </div>
+</section>
+{% endblock content %}

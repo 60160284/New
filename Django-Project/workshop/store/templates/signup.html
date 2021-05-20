@@ -1,0 +1,37 @@
+{% extends 'layout-forms.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+<section class="section">
+    <div class="container p-5">
+        <h2 class="font-weight-bold mt-3">สร้างบัญชีใหม่</h2>
+        <hr>
+        <form method="post">
+
+            <div class="columns">
+                {% for message in messages %}
+
+                <div class="alert alert-danger" role="alert">
+                    
+               
+                    {{ message }}
+
+                </div>
+                {% endfor %}
+                <div class="field">
+                    <label class="label">
+                        {% csrf_token %}
+                        {{form|crispy }}
+
+                        <input type="submit" class="btn btn-primary" value="ยืนยัน">
+                    </label>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+{% endblock %}

@@ -1,0 +1,218 @@
+{% extends 'layout-forms.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="section" style="background: #eaf4ff;">
+    <div class="container p-5">
+        <h2 class="font-weight-bold mt-3">โปรดกรอกข้อมูลเพื่อชำระสินค้า <i class="fa fa-credit-card"></i></h2>
+        <hr>
+        <div class="row">
+
+            <div class="col-6">
+                <p><strong>ข้อมูลพื้นฐานเกี่ยวกับการปกป้องข้อมูล:</strong> รวบรวมข้อมูลของคุณสำหรับการจัดการ
+                    และดำเนินการสมัครสมาชิกของคุณ ข้อมูลนี้จะไม่มอบให้กับบุคคลที่สามจากบริษัท
+                    เฉพาะในกรณีที่มีข้อกำหนดทางกฎหมายเท่านั้น</p>
+            </div>
+
+            <div class="col-6">
+
+                <label class="font-weight-bold">สิ่งที่คุณกำลังซื้อ :</label>
+                <div class="card-body border shadow-sm p-3" style="background: white;">
+
+                    <div class="row align-items-start ">
+                        <div class="col">
+                            <label>ชื่อสินค้า</label>
+                        </div>
+
+                        <div class="col">
+                            <label class="">X
+                                1</label>
+                        </div>
+                    </div>
+
+                    <hr class="navbar-divider">
+
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <label class="label">แสดงยอดทั้งหมด</label>
+                        </div>
+
+                        <div class="col">
+                            <label class="label"> 390 </label>
+                            <p>บาท</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row mt-5">
+            <div class="col">
+                {% if request.user.is_authenticated %}
+                <form method="post" autocomplete="on">
+                    <h3 class="font-weight-bold">ข้อมูลการเรียกเก็บเงิน</h3>
+                    <fieldset class="form-group col-md-8">
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" value="{{request.user.username}}">
+
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">อีเมล</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="{{request.user.email}}">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ที่อยู่</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+                                <!-- ถ้าทำform สามารถเรียกโดยการ request -->
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ประเทศ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">เมือง</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ใบกำกับภาษี</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+                {% else %}
+                <form method="post" autocomplete="on">
+                    <h3 class="font-weight-bold">ข้อมูลการเรียกเก็บเงิน</h3>
+                    <fieldset class="form-group col-md-8">
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ชื่อผู้ใช้งาน</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="" value="">
+
+                            </div>
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">อีเมล</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" value="">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ที่อยู่</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+                                <!-- ถ้าทำform สามารถเรียกโดยการ request -->
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ประเทศ</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">เมือง</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">ใบกำกับภาษี</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control">
+
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </form>
+                {% endif %}
+
+            </div>
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col">
+                <fieldset class="form-group col-md-8">
+                    <form method="post" autocomplete="on">
+                        <h3 class="font-weight-bold">ข้อมูลการชำระเงิน</h3>
+
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-2 col-form-label">หมายเลขบัตรเครดิต</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" maxlength="13">
+
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="" class="col col-form-label">รหัสความปลอดภัย</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control shadow-sm p-3" data-omise="security_code"
+                                    size="8" placeholder="XXXX" maxlength="4">
+
+                            </div>
+                            <label for="" class="col col-form-label">วันหมดอายุ</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control shadow-sm p-3" data-omise="expiration_month"
+                                    size="4" placeholder="ปี/เดือน">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                          
+                        </div>
+                        <button type="button" class="btn btn-dark " style="width: 100%;">ยืนยัน</button>
+                    </form>
+                </fieldset>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</section>
+
+{% endblock content %}

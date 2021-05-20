@@ -1,0 +1,36 @@
+<nav class="nav">
+    <div class="nav__links" style="overflow-y: scroll;">
+        <label class="nav__title"> ชื่อโปรเจ็ค</label>
+        <a class="nav__link" href="{% url 'home' %}">
+
+            หน้าหลัก
+        </a>
+        <label class="nav__title">หมวดหมู่</label>
+
+        {% for category in links %}
+        <a class="nav__link" href="{{category.get_url}}">
+            {{category.name}}
+        </a>
+        {% endfor %}
+
+        <label class="nav__title">รูปแบบ</label>
+
+        {% for typefile in tlinks %}
+        <a class="nav__link" href="{{typefile.get_url}}">
+            {{typefile.name}}
+        </a>
+        {% endfor %}
+
+
+        <label class="nav__title">การเผยแพร่</label>
+        {% for published in plinks %}
+        <a class="nav__link" href="{{published.get_url}}">
+            {{published.name}}
+        </a>
+
+
+        {% endfor %}
+    </div>
+    <div class="nav__overlay"></div>
+
+</nav>

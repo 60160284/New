@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% load 'static %'}
+{% block content%}
+<section class="hero ">
+  <div class="hero-body">
+
+
+    <div class="columns">
+      <div class="column is-8 is-offset-2 ">
+        <figure class="image is-2by1 ">
+          <img src="{{uploads.image.url}}" alt="Placeholder image">
+        </figure>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section bg">
+  <div class="columns">
+    <div class="column is-8 is-offset-2">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item">
+            <p class="title">{{uploads.name}}</p>
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          {% if uploads.price > 0 %}
+            {% if request.user.is_authenticated %}
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-warning " href="{% url 'paymentOrder' %}">
+                <span class="icon">
+                  <i class="fa fa-download item-down"></i>
+                </span>
+                <strong>ดาวน์โหลด</strong>
+              </a>
+
+            </div>
+          </div>
+            {% else %}
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button is-warning " href="{% url 'signIn' %}">
+                  <span class="icon">
+                    <i class="fa fa-download item-down"></i>
+                  </span>
+                  <strong>ดาวน์โหลด</strong>
+                </a>
+  
+              </div>
+            </div>
+            {% endif %}
+          {% else %}
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-info is-inverted" href="{{uploads.inputfile.url}}">
+                <span class="icon">
+                  <i class="fa fa-download item-down"></i>
+                </span>
+                <strong>ดาวน์โหลด</strong>
+              </a>
+
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+
+      
+      <div class="content is-medium item-sdy" style="padding-top: 2rem;">
+        <p>{{uploads.description}} </p>
+
+
+      </div>
+
+      <div class="columns">
+        <div class="column">{{uploads.created}}</div>
+        <div class="column">{{uploads.category.name}}</div>
+        <div class="column">{{uploads.typefile.name}}</div>
+        <div class="column">{{uploads.published.name}}</div>
+      </div>
+    </div>
+
+</section>
+
+{% endblock %}

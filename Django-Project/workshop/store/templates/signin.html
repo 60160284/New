@@ -1,0 +1,35 @@
+{% extends 'layout-forms.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section class="section">
+    <div class="container p-5">
+        <h2 class="font-weight-bold mt-3">เข้าสู่ระบบ</h2>
+        <hr>
+
+        <form method="post">
+
+            <div class="columns">
+                <div class="field">
+                    <label class="label">
+                        {% csrf_token %}
+                        {{form | crispy}}
+                        <a href="{% url 'resetPass' %}">
+                            <p class="">ลืมรหัสผ่าน</p>
+                        </a>
+                        <input type="submit" class="btn btn-primary" value="ยืนยัน">
+                    </label>
+
+                </div>
+            </div>
+            <div class="field">
+                <a href="{% url 'signUp' %}"><label class="naccount">สร้างบัญชีใหม่</label></a>
+            </div>
+
+        </form>
+
+
+    </div>
+</section>
+{% endblock %}
