@@ -58,6 +58,12 @@ def upload_workspaceView(request):
 def upload_updateView(request,pk):
     upload = UploadFile.objects.get(id=pk)
     form = UploadFileForm(instance=upload)
+
+    if request.method =='POST':
+        form = UploadFileForm(request.POST,request.FILES , instance=upload)
+        if form.is_valid():
+            form.save()
+            return redirect('workspace')
     context={
         'form':form
     }
