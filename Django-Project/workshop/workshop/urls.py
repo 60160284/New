@@ -54,7 +54,8 @@ urlpatterns = [
     path('account/login',views.SignInView, name="signIn"),
     path('account/reset',views.resetPass, name="resetPass"),
     path('account/logout',views.signOutView,name="signOut"),
-    path('account/profile',views.profileView,name="proFile"),
+    path('account/profile/',views.profile_detailView,name="profileDetail"),
+    path('account/profile/profile_form/',views.profile_formView,name="profileForm"),
     path('search',views.search, name="searchItem"),
     
  

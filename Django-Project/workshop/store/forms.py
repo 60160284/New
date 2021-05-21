@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import UploadFile,Category,Typefile,Published,Profile,UploadFile
+from .models import UploadFile,Category,Typefile,Published,Profile
   
 
 
@@ -59,7 +59,7 @@ class UploadFileForm(forms.ModelForm):
 
     name = forms.CharField(
         label='ชื่อไฟล์งาน',max_length=50,
-        help_text="ใส่ชื่อไฟล์เป็นภาษาอังกฤษ")
+        help_text="ใส่ชื่อไฟล์งาน")
     
 
     description= forms.CharField(
@@ -86,7 +86,10 @@ class UploadFileForm(forms.ModelForm):
         label='เลือกไฟล์หน้าปก',
         help_text='ไฟล์ (เช่น .jpeg, .png เป็นต้น)'
     )
-   
+    price=forms.DecimalField(
+        widget=forms.TextInput(attrs={'placeholder': '0.0'}),
+        label='ราคา'
+    )
    
     class Meta:
         model = UploadFile  
@@ -109,13 +112,10 @@ class UserUpdateForm(forms.ModelForm):
     
 class ProfileUpdateForm(forms.ModelForm):
  
-
     profile_image=forms.ImageField(
         
         label='เลือกรูปโปรไฟล์',
-        help_text='ไฟล์ (เช่น .jpeg, .png เป็นต้น)',
-        
-
+        help_text='ไฟล์ (เช่น .jpeg, .png เป็นต้น)'
     )
     class Meta:
         model = Profile

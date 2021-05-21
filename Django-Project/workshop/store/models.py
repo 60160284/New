@@ -103,24 +103,20 @@ pre_save.connect(pre_save_slug_field, sender=UploadFile)
 
 class Profile(models.Model):
         user = models.OneToOneField(User, on_delete=models.CASCADE)
-        profile_image = models.ImageField(upload_to='profile_pics/')
+        profile_image = models.ImageField(default="img/default.jpeg" ,upload_to='profile_pics/')
 
    
-
         def __str__(self):
-            return f'{self.user.username} Profile'
+            return f'{self.user.username} '
 
         def save(self):
             super().save()
 
         
-
-        
-
         def get_url(self, *args):
-            return reverse('proFile',args=[self.user.profile])
+            return reverse('profileDetail',args=[self.user.profile])
 
-        
+
 
 
        

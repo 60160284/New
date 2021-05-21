@@ -2,7 +2,7 @@
 {% load 'static %'}
 {% block content%}
 <section class="hero ">
-  <div class="hero-body">
+  <div class="hero-body" style="background-color: white;">
 
 
     <div class="columns">
@@ -19,16 +19,16 @@
 <section class="section bg">
   <div class="columns">
     <div class="column is-8 is-offset-2">
-      <div class="navbar-menu">
+      <div class="navbar-menu block">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <h1 class="navbar-item">
             <p class="title">{{uploads.name}}</p>
-          </a>
+          </h1>
         </div>
 
         <div class="navbar-end">
           {% if uploads.price > 0 %}
-            {% if request.user.is_authenticated %}
+          {% if request.user.is_authenticated %}
           <div class="navbar-item">
             <div class="buttons">
               <a class="button is-warning " href="{% url 'paymentOrder' %}">
@@ -40,19 +40,19 @@
 
             </div>
           </div>
-            {% else %}
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-warning " href="{% url 'signIn' %}">
-                  <span class="icon">
-                    <i class="fa fa-download item-down"></i>
-                  </span>
-                  <strong>ดาวน์โหลด</strong>
-                </a>
-  
-              </div>
+          {% else %}
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-warning " href="{% url 'signIn' %}">
+                <span class="icon">
+                  <i class="fa fa-download item-down"></i>
+                </span>
+                <strong>ดาวน์โหลด</strong>
+              </a>
+
             </div>
-            {% endif %}
+          </div>
+          {% endif %}
           {% else %}
           <div class="navbar-item">
             <div class="buttons">
@@ -68,20 +68,67 @@
           {% endif %}
         </div>
       </div>
+      <article class="media block">
+        <div class="media-left">
+          <figure class="image is-64x64" >
+            <img src="{{ user.profile.profile_image.url }}" class="is-rounded" alt="Profile image" style="border: 5px solid;" >
+          </figure>
+        </div>
 
 
-      
-      <div class="content is-medium item-sdy" style="padding-top: 2rem;">
-        <p>{{uploads.description}} </p>
+        <div class="media-content">
+          <div class="content">
+            <p class="subtitle">
+              
+              <br>
+              {{ user.first_name }}
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <div class="media-content">
+        <div class="content is-medium item-sdy" style="padding: 2rem 0rem 2rem 0rem;">
+          <p>{{uploads.description}} </p>
 
 
+        </div>
       </div>
-
       <div class="columns">
-        <div class="column">{{uploads.created}}</div>
-        <div class="column">{{uploads.category.name}}</div>
-        <div class="column">{{uploads.typefile.name}}</div>
-        <div class="column">{{uploads.published.name}}</div>
+        <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
+          border-radius: 6px;
+          padding: 13px 20px;
+          font-size: 14px;
+          color: #000;
+          background-color: #fff;
+  
+          transition: all .5s">{{uploads.created}}</span></div>
+        <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
+          border-radius: 6px;
+          padding: 13px 20px;
+          font-size: 14px;
+          color: #000;
+          background-color: #fff;
+  
+          transition: all .5s">{{uploads.category.name}}</span></div>
+        <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
+          border-radius: 6px;
+          padding: 13px 20px;
+          font-size: 14px;
+          color: #000;
+          background-color: #fff;
+  
+          transition: all .5s">{{uploads.typefile.name}}</span></div>
+        <div class="column">
+          <span class="box" style=" border: 2px solid #E1E8EE;
+          border-radius: 6px;
+          padding: 13px 20px;
+          font-size: 14px;
+          color: #000;
+          background-color: #fff;
+  
+          transition: all .5s">{{uploads.published.name}}</span>
+        </div>
       </div>
     </div>
 

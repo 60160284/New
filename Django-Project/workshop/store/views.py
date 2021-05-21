@@ -13,12 +13,12 @@ from django.core.paginator import Paginator,EmptyPage,InvalidPage
 
 from django.urls import reverse_lazy
 
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 from .models import Profile, UploadFile , Category,Typefile,Published
 from .forms import UploadFileForm, ProfileUpdateForm, UserUpdateForm,  SignUpForm
 
 
-from django.db.models.signals import post_save
+
 
 def paymentView(request):
     return render(request, 'payment.html')
@@ -230,32 +230,39 @@ def signOutView(request):
 
 
 @login_required
-def profileView(request):
-    u_form = UserUpdateForm(request.POST or None)
-    p_form = ProfileUpdateForm(request.POST or None,request.FILES or None)
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,request.FILES)
-        
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            return redirect('proFile')
+def profile_detailView(request):
+
+    if request.method =='POST':
+        user_form = UserUpdateForm(request.POST , instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            
+            messages.success(request, f'แก้ไขสำเร็จ')
+            return redirect('profileDetail')
 
     else:
-       
-        u_form = UserUpdateForm(instance=request.user)
-        
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-
-    context = {
-        'u_form': u_form,
-        'p_form': p_form
+        user_form = UserUpdateForm(instance=request.user) 
+    context={
+        'user_form':user_form
     }
+  
+
+    return render(request, 'profiles/profile_detail.html', context)
 
 
-    return render(request, 'profile.html', context)
 
+@login_required
+def profile_formView(request):
+    p_form = ProfileUpdateForm()
+    if request.method =='POST':
+            p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+            if p_form.is_valid():
+                obj = p_form.save(commit = False)
+                obj.user = request.user;
+                obj.save()
+                return redirect('profileForm')
+            else:
+                print(p_form.errors)
 
-
-
+    context = {'p_form':p_form}
+    return render(request, 'profiles/profile_form.html', context)

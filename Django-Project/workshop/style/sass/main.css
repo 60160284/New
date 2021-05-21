@@ -1,12 +1,12 @@
 @import "https://fonts.googleapis.com/css?family=Pridi";
 * {
-  font-family: "Pridi"; }
+  font-family: 'Pridi','Times New Roman'; }
 
 section.bg {
   background: #eaf4ff; }
 
 .button.Sdy {
-  background: #303b47;
+  background: #303B47;
   color: #ffffff; }
 
 .button.home-filter {
@@ -63,7 +63,7 @@ label.naccount {
   border-radius: 50%; }
 
 .navbar.home {
-  background: #303b47; }
+  background: #303B47; }
 
 body {
   /*--header-height: 50px;*/
@@ -74,7 +74,7 @@ body {
 
 .header {
   position: sticky;
-  background: #303b47;
+  background: #303B47;
   width: 100%;
   height: var(--header-height);
   display: flex;

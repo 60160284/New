@@ -1,0 +1,41 @@
+{% extends 'layout-forms.html' %}
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<section class="section">
+    <div class="container p-5">
+        <h2 class="font-weight-bold mt-3">บัญชีผู้ใช้</h2>
+
+
+
+
+        <div class="row g-3">
+            <div class="col md-6">
+                <div class="col-12 p-2">
+
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">โปรไฟล์ของฉัน</legend>
+
+                        <form method="POST" enctype="multipart/form-data">
+                         
+                            <fieldset class="form-group">
+                                <img width=250 src="{{ user.profile.profile_image.url }}" alt="">
+                                {% csrf_token %}
+                                {{ p_form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-outline-info" type="submit">เพิ่มรูปภาพ</button>
+                            </div>
+                        </form>
+                    </fieldset>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+</section>
+{% endblock content %}

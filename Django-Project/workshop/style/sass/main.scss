@@ -2,11 +2,11 @@ $black:#000;
 $white: #ffffff;
 $color-1:#303B47;
 $bg-space:#767e87;
-
+$bgdefault:#eaf4ff;
 @import "https://fonts.googleapis.com/css?family=Pridi";
 * {
-  font-family: "Pridi";
-  
+  font-family: 'Pridi','Times New Roman';
+
 }
 
 section.bg {
@@ -14,8 +14,8 @@ section.bg {
 }
 
 .button.Sdy {
-  background: #303b47;
-  color: #ffffff;
+  background: $color-1;
+  color: $white;
 }
 
 .button.home-filter {
@@ -92,7 +92,7 @@ label.naccount {
 }
 
 .navbar.home {
-  background: #303b47;
+  background: $color-1;
 }
 
 body {
@@ -107,7 +107,7 @@ body {
 
 .header {
   position: sticky;
-  background: #303b47;
+  background: $color-1;
   width: 100%;
   height: var(--header-height);
   display: flex;
@@ -115,7 +115,7 @@ body {
 }
 
 .pagination-link.color {
-  background: #ffffff;
+  background: $white;
 }
 
 .header__button {
@@ -124,7 +124,7 @@ body {
   background: none;
   outline: none;
   border: none;
-  color: #ffffff;
+  color: $white;
   cursor: pointer;
 }
 
@@ -135,7 +135,7 @@ body {
   z-index: 2;
   height: 100vh;
   width: 250px;
-  background: #ffffff;
+  background: $white;
   transform: translateX(-250px);
 }
 
