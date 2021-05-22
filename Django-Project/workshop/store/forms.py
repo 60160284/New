@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import widgets
 from .models import UploadFile,Category,Typefile,Published,Profile
   
 
@@ -80,7 +81,9 @@ class UploadFileForm(forms.ModelForm):
 
     inputfile=forms.FileField(
         label='เลือกไฟล์',
-        help_text='ไฟล์ (เช่น .zip, .ai, .obj, .blender เป็นต้น)'
+        help_text='ไฟล์ (เช่น .zip, .ai เป็นต้น)',
+        widget=forms.FileInput(attrs={'accept': 'application/octet-stream, application/postscript, application/zip, .7z, .rar'})
+       
     )
     image=forms.ImageField(
         label='เลือกไฟล์หน้าปก',
@@ -95,6 +98,26 @@ class UploadFileForm(forms.ModelForm):
         model = UploadFile  
         fields =['name','description','category','typefile','published','inputfile','image','price']
 
+    
+
+    widgets ={
+        'inputfile' : forms.ClearableFileInput()
+        
+    }
+    def clean_file(self):
+	    data = self.cleaned_data['inputfile']
+
+	    DATA_TYPES = ['application/octet-stream, application/postscript, application/zip, .7z, .rar']
+
+		# check if the content type is what we expect
+	    content_type = data.content_type
+
+		# print('CONTENT TYPE',content_type)
+
+	    if content_type in DATA_TYPES:
+		    return data
+	    else:
+		    raise forms.ValidationError('Invalid content type')
   
 class UserUpdateForm(forms.ModelForm):
     username=forms.CharField(
@@ -120,4 +143,5 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_image']
+        
         

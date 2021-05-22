@@ -57,7 +57,7 @@ urlpatterns = [
     path('account/profile/',views.profile_detailView,name="profileDetail"),
     path('account/profile/profile_form/',views.profile_formView,name="profileForm"),
     path('search',views.search, name="searchItem"),
-    
+   
  
     
 ]

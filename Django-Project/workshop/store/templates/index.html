@@ -14,7 +14,7 @@
             <div class="column is-one-quarter">
                 <figure class="image is-3by2">
                     <a href="{{upload.get_url}}">
-                    <img src="{{upload.image.url}}" alt="Placeholder image">
+                        <img src="{{upload.image.url}}" alt="Placeholder image">
                     </a>
                 </figure>
 
@@ -58,21 +58,64 @@
 
         </div>
     </div>
-    <nav class="pagination is-small is-centered" role="navigation" aria-label="pagination" style="padding-top: 5px;">
-        {% if products.paginator.num_pages > 1 %}
-        <ul class="pagination-list">
-            {% for page_number in products.paginator.page_range %}
-            <li>
-                <a class="pagination-link is-current" href="?page={{ page_number }}">{{ page_number }}</a>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-    </nav>
+    
 </section>
 
 
+<footer class="footer" style="background-color: #eaf4ff">
+    <nav class="pagination is-small is-centered" role="navigation" aria-label="pagination" style="padding-top: 5px;">
+        <ul class="pagination-list">
+            {% if uploads.has_previous %}
+            <li class="p-1">
+                <a class="button is-link is-outlined is-small " href="?page={{ uploads.previous_page_number }}">
+                    <
+                </a>
+            </li>
+            {% else %}
+            <li class=" disabled p-1">
+                <a class="button is-link is-outlined is-small " href="" tabindex="-1" aria-disabled="true">
+                    <
+                </a>
+            </li>
+            {% endif %}
+           
+            {% if uploads.number|add:'-4' > 1 %}
+                <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ uploads.number|add:'-5' }}">&hellip;</a></li>
+            {% endif %} 
 
+            {% for page_number in uploads.paginator.page_range %}
+                {% if uploads.number == page_number %}
+                    <li class="p-1">
+                        <a class="button is-link is-small" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% elif page_number > uploads.number|add:'-3' and page_number < uploads.number|add:'3' %}
+                    <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ page_number }}">{{ page_number }}</a></li>
+               
+   
+                {% endif %}
+            {% endfor %}
+
+            {% if uploads.paginator.num_pages > uploads.number|add:'4' %}
+                <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ uploads.number|add:'5' }}">&hellip;</a></li>
+            {% endif %} 
+         
+            
+
+
+            {% if uploads.has_next %}
+            <li class="p-1">
+                <a class="button is-link is-outlined is-small" href="?page={{ uploads.next_page_number }}">></a>
+            </li>
+            {% else %}
+            <li class="disabled p-1">
+                <a class="button is-link is-outlined is-small" href="#" tabindex="-1" aria-disabled="true">></a>
+            </li>
+            {% endif %}
+           
+
+        </ul>
+
+    </nav>
+</footer>
 
 {% endblock %}

@@ -107,7 +107,7 @@ def index(request, category_slug=None):
         uploads=UploadFile.objects.all().filter()
 
     
-    paginator=Paginator(uploads,8)
+    paginator=Paginator(uploads, 8)
     try:
         page=int(request.GET.get('page','1'))
     except:
@@ -136,9 +136,22 @@ def indextype(request, typefile_slug=None):
         uploads=UploadFile.objects.all().filter(typefile=typefile_page)
     else :
         uploads=UploadFile.objects.all().filter()
+    
+    paginator=Paginator(uploads, 8)
+    try:
+        page=int(request.GET.get('page','1'))
+    except:
+        page=1
+
+    try:
+        typeperPage=paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        typeperPage=paginator.page(paginator.num_pages)
 
 
-    return render(request,'index.html',{'uploads':uploads,'typefile':typefile_page})
+
+
+    return render(request,'index.html',{'uploads':typeperPage,'typefile':typefile_page})
 
 
 
@@ -151,9 +164,21 @@ def indexpub(request, published_slug=None):
         uploads=UploadFile.objects.all().filter(published=published_page)
     else :
         uploads=UploadFile.objects.all().filter()
+    
+    paginator=Paginator(uploads, 8)
+    try:
+        page=int(request.GET.get('page','1'))
+    except:
+        page=1
+
+    try:
+        pubperPage=paginator.page(page)
+    except (EmptyPage,InvalidPage):
+        pubperPage=paginator.page(paginator.num_pages)
 
 
-    return render(request,'index.html',{'uploads':uploads,'published':published_page})
+
+    return render(request,'index.html',{'uploads':pubperPage,'published':published_page})
 
 
 
@@ -266,3 +291,5 @@ def profile_formView(request):
 
     context = {'p_form':p_form}
     return render(request, 'profiles/profile_form.html', context)
+
+

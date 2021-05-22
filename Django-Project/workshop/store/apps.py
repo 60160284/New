@@ -6,3 +6,4 @@ class StoreConfig(AppConfig):
     name = 'store'
 
   
+ 

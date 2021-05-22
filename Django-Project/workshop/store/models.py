@@ -11,7 +11,15 @@ from django.template.defaultfilters import default, slugify
 from django.db.models.signals import pre_save, post_save
 from autoslug import AutoSlugField
 from .utils import unique_slug
-
+from PIL import Image
+#CATEGORY = (
+	#('itd', 'IT Development'),
+	#('wd', 'Web Design'),
+	#('iandd', 'Illustration and Drawing'),
+	#('sm', 'Social Media'),
+	#('ps', 'PhotoShop'),
+	#('crypto', 'CryptoCurrencies'),
+	#) ทางเลือกใหม่
 
 # Create your models here.
 class Category(models.Model):
@@ -103,16 +111,18 @@ pre_save.connect(pre_save_slug_field, sender=UploadFile)
 
 class Profile(models.Model):
         user = models.OneToOneField(User, on_delete=models.CASCADE)
-        profile_image = models.ImageField(default="img/default.jpeg" ,upload_to='profile_pics/')
+        profile_image = models.ImageField(default="img/default.jpg" ,upload_to='profile_pics/')
 
    
         def __str__(self):
-            return f'{self.user.username} '
+            return f'{self.user.username} Profile'
 
         def save(self):
             super().save()
 
-        
+            img= Image.open(self.profile_image.path)
+
+
         def get_url(self, *args):
             return reverse('profileDetail',args=[self.user.profile])
 
