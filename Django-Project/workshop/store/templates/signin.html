@@ -15,7 +15,7 @@
                     <label class="label">
                         {% csrf_token %}
                         {{form | crispy}}
-                        <a href="{% url 'resetPass' %}">
+                        <a href="{% url 'password_reset' %}">
                             <p class="">ลืมรหัสผ่าน</p>
                         </a>
                         <input type="submit" class="btn btn-primary" value="ยืนยัน">

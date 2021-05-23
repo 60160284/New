@@ -38,6 +38,7 @@ STATIC_DIR = 'static'
 STATICFILES_DIRS = [STATIC_DIR]
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'store',
     'sass_processor',
     'crispy_forms',
+    'livereload',
   
 ]
 
@@ -59,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'workshop.urls'
@@ -160,3 +163,10 @@ LANGUAGE_CODE = 'th'
 LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_POST = 587
+EMAIL_HOST_USER = '60160284@go.buu.ac.th'
+EMAIL_HOST_PASSWORD = '19981212Tk$'
+EMAIL_USE_TLS = True

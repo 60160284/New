@@ -13,20 +13,24 @@
                 <div class="col-12 p-2">
                     <fieldset class="form-group">
                         <legend class="border-bottom mb-4">ข้อมูลโปรไฟล์</legend>
-               
+
 
                         {% if user.profile.profile_image %}
-                    
-                        <img src="{{ user.profile.profile_image.url }}" alt="">
+
+                        <img width=250 src="{{ user.profile.profile_image.url }}" alt="">
                         {% else %}
-                        
-                        <img src="{% static 'img/Default.jpg' %}" alt="">
-                      
+
+                        <img width=250 src="{% static 'img/Default.jpg' %}" alt="">
+
                         <p>I Am a Default IMAGE</p>
                         {% endif %}
+                        
                     </fieldset>
+                    <a class='btn btn-info' href="{% url 'profileForm'%}">แก้ไขรูปโปรไฟล์</a>
                 </div>
-                <a class='btn btn-info' href="{% url 'profileForm'%}">แก้ไขรูปโปรไฟล์</a>
+                
+                   
+               
             </div>
 
 

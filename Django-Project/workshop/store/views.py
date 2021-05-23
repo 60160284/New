@@ -15,10 +15,17 @@ from django.urls import reverse_lazy
 
 
 from .models import Profile, UploadFile , Category,Typefile,Published
-from .forms import UploadFileForm, ProfileUpdateForm, UserUpdateForm,  SignUpForm
+from .forms import UploadFileForm, ProfileUpdateForm, UserUpdateForm,  SignUpForm, UserForgotPasswordForm
 
 
 
+from django.contrib.auth.forms import PasswordResetForm
+
+
+
+def getfilter(request):
+    
+    return render(request, 'index.html')
 
 def paymentView(request):
     return render(request, 'payment.html')
@@ -26,7 +33,7 @@ def paymentView(request):
 
 def search(request):
     uploads=UploadFile.objects.filter(name__contains=request.GET['title'])
-    
+    #print(uploads)
     return render(request,'index.html',{'uploads':uploads})
 
 @login_required
@@ -86,9 +93,6 @@ def upload_deleteView(request, pk):
     }
 
     return render(request, 'uploads/upload_delete.html', context)
-
-
-
 
 
 
@@ -198,10 +202,6 @@ def uploadProductPage(request, category_slug, uploadfile_slug):
 
 
 
-
-def resetPass(request):
-    return render(request,'password_reset.html')
-
 def SignUpView(request):
     if request.method=='POST':
         form=SignUpForm(request.POST)
@@ -279,17 +279,30 @@ def profile_detailView(request):
 @login_required
 def profile_formView(request):
     p_form = ProfileUpdateForm()
+
     if request.method =='POST':
             p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
             if p_form.is_valid():
                 obj = p_form.save(commit = False)
-                obj.user = request.user;
+                obj.user.profile = request.user.profile;
                 obj.save()
-                return redirect('profileForm')
+                return redirect('profileDetail')
             else:
                 print(p_form.errors)
+    
 
     context = {'p_form':p_form}
     return render(request, 'profiles/profile_form.html', context)
 
+def password_reset_request(request):
+    return render(request, 'password/password_reset.html')
+
+def password_reset_done(request):
+    return render(request, 'password/password_reset_done.html')
+
+def password_reset_confirm(request):
+    return render(request, 'password/password_reset_confirm.html')
+
+def password_reset_complete(request):
+    return render(request, 'password/password_reset_complete.html')
 

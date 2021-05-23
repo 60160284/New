@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,PasswordResetForm
 from django.forms import widgets
 from .models import UploadFile,Category,Typefile,Published,Profile
   
@@ -53,7 +53,17 @@ class SignUpForm(UserCreationForm):
         'password2')
 
 
+    def save(self, commit=True):
+        user = super(SignUpForm, self).save(commit=False)
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+        return user
 
+    def clean_email(self):
+        if User.objects.filter(email=self.cleaned_data['email']).exists():
+            raise forms.ValidationError(self.fields['email'].error_messages['exists'])
+        return self.cleaned_data['email']
 
 
 class UploadFileForm(forms.ModelForm):
@@ -144,4 +154,10 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['profile_image']
         
-        
+
+
+class UserForgotPasswordForm(PasswordResetForm):
+    email = forms.EmailField(required=True,max_length=254)
+    class Meta:
+        model = User
+        fields = ("email")

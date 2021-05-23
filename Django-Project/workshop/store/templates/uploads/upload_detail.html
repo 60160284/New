@@ -69,11 +69,20 @@
         </div>
       </div>
  
-      <!-- <article class="media block">
+      <article class="media block">
         <div class="media-left">
+          {% if uploads.user.profile.profile_image.url %}
           <figure class="image is-64x64" >
-            <img src="{{ user.profile.profile_image.url }}" class="is-rounded" alt="Profile image" style="border: 5px solid;" >
+            <img src="{{uploads.user.profile.profile_image.url}}" class="is-rounded" alt="Profile image" style="border: 3px solid;" >
           </figure>
+          {% else %}
+          <figure class="image is-64x64" >
+ 
+            <img src="" alt="Profile image" style="border: 3px solid;" >
+      
+                      
+          </figure>
+          {% endif %}
         </div>
 
 
@@ -82,11 +91,11 @@
             <p class="subtitle">
               
               <br>
-              {{ user.first_name }}
+              {{ uploads.user.username }}
             </p>
           </div>
         </div>
-      </article> -->
+      </article> 
      
       <div class="media-content">
         <div class="content is-medium item-sdy" style="padding: 2rem 0rem 2rem 0rem;">

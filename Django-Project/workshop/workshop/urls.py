@@ -18,7 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-
+from django.urls import path, include
+from django.contrib.auth import views as auth_views #import this
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -29,6 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('',views.index,name="home"),
+
+    path('filter',views.getfilter,name="getfilter"),
     path('category/<slug:category_slug>',views.index,name="product_by_category"),
     path('typefile/<slug:typefile_slug>',views.indextype,name="product_by_typefile"),
     path('published/<slug:published_slug>',views.indexpub,name="product_by_published"),
@@ -52,13 +55,23 @@ urlpatterns = [
 
     path('account/create',views.SignUpView, name="signUp"),
     path('account/login',views.SignInView, name="signIn"),
-    path('account/reset',views.resetPass, name="resetPass"),
+    path('account/reset',views.password_reset_request, name="password_reset"),
+    path('account/reset/done',views.password_reset_done, name="password_reset_done"),
+    path('account/reset/confirm',views.password_reset_confirm, name="password_reset_confirm"),
+    path('account/reset/complete',views.password_reset_complete, name="password_reset_complete"),
+
+    
+
     path('account/logout',views.signOutView,name="signOut"),
     path('account/profile/',views.profile_detailView,name="profileDetail"),
     path('account/profile/profile_form/',views.profile_formView,name="profileForm"),
     path('search',views.search, name="searchItem"),
    
- 
+
+   
+
+    
+    #path('accounts/', include('django.contrib.auth.urls')),
     
 ]
 
