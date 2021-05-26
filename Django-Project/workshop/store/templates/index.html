@@ -64,53 +64,65 @@
 
 <footer class="footer" style="background-color: #eaf4ff">
     <nav class="pagination is-small is-centered" role="navigation" aria-label="pagination" style="padding-top: 5px;">
-        <ul class="pagination-list">
+        <ul class="pagination-list is-fixed">
+            {% if page.paginator.num_pages != 1 %}
+            <li class="m-3"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page=1">หน้าแรก</a></li>
+            {% else %}
+            <li><a class="button is-link is-outlined is-small" style="background-color: white ;" href="#">หน้าแรก</a></li>
+            {% endif %}
+
             {% if uploads.has_previous %}
             <li class="p-1">
-                <a class="button is-link is-outlined is-small " href="?page={{ uploads.previous_page_number }}">
+                <a class="button is-link is-outlined is-small " style="background-color: white ;" href="?page={{ uploads.previous_page_number }}">
                     <
                 </a>
             </li>
             {% else %}
             <li class=" disabled p-1">
-                <a class="button is-link is-outlined is-small " href="" tabindex="-1" aria-disabled="true">
+                <a class="button is-link is-outlined is-small " style="background-color: white ;" href="" tabindex="-1" aria-disabled="true">
                     <
                 </a>
             </li>
             {% endif %}
            
             {% if uploads.number|add:'-4' > 1 %}
-                <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ uploads.number|add:'-5' }}">&hellip;</a></li>
+                <li class="p-1"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page={{ uploads.number|add:'-5' }}">&hellip;</a></li>
             {% endif %} 
 
             {% for page_number in uploads.paginator.page_range %}
                 {% if uploads.number == page_number %}
                     <li class="p-1">
-                        <a class="button is-link is-small" href="?page={{ page_number }}">{{ page_number }}</a>
+                        <a class="button is-link is-small"  href="?page={{ page_number }}">{{ page_number }}</a>
                     </li>
                 {% elif page_number > uploads.number|add:'-3' and page_number < uploads.number|add:'3' %}
-                    <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ page_number }}">{{ page_number }}</a></li>
-               
-   
+                    <li class="p-1"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page={{ page_number }}">{{ page_number }}</a></li>
+                
+                    
                 {% endif %}
             {% endfor %}
 
-            {% if uploads.paginator.num_pages > uploads.number|add:'4' %}
-                <li class="p-1"><a class="button is-link is-outlined is-small" href="?page={{ uploads.number|add:'5' }}">&hellip;</a></li>
+            {% if uploads.paginator.num_pages > uploads.number|add:'2' %}
+                <li class="p-1"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page={{ uploads.number|add:'5' }}">&hellip;</a></li>
             {% endif %} 
-         
             
-
-
+         
             {% if uploads.has_next %}
             <li class="p-1">
-                <a class="button is-link is-outlined is-small" href="?page={{ uploads.next_page_number }}">></a>
+                <a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page={{ uploads.next_page_number }}">></a>
             </li>
             {% else %}
             <li class="disabled p-1">
-                <a class="button is-link is-outlined is-small" href="#" tabindex="-1" aria-disabled="true">></a>
+                <a class="button is-link is-outlined is-small" style="background-color: white ;" href="#" tabindex="-1" aria-disabled="true">></a>
             </li>
             {% endif %}
+
+            {% if uploads.paginator.num_pages != uploads.number %}
+            <li class="m-3"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="?page={{ uploads.paginator.num_pages }}">หน้าสุดท้าย</a></li>
+            {% else %}
+            <li class="page-item disabled"><a class="button is-link is-outlined is-small" style="background-color: white ;" href="#">หน้าสุดท้าย</a></li>
+            {% endif %}
+            
+          
            
 
         </ul>

@@ -18,8 +18,8 @@
 
 <section class="section bg">
   <div class="columns">
-    <div class="column is-8 is-offset-2">
-      <div class="navbar-menu block">
+    <div class="column is-8 is-offset-2" >
+      <div class="navbar-menu block" >
         <div class="navbar-start">
           <h1 class="navbar-item">
             <p class="title">{{uploads.name}}</p>
@@ -54,9 +54,9 @@
           </div>
           {% endif %}
           {% else %}
-          <div class="navbar-item">
+          <div class="navbar-item" ">
             <div class="buttons">
-              <a class="button is-info is-inverted" href="{{uploads.inputfile.url}}">
+              <a class="button is-info is-outlined"  href="{{uploads.inputfile.url}}">
                 <span class="icon">
                   <i class="fa fa-download item-down"></i>
                 </span>
@@ -69,7 +69,7 @@
         </div>
       </div>
  
-      <article class="media block">
+      <!-- <article class="media block">
         <div class="media-left">
           {% if uploads.user.profile.profile_image.url %}
           <figure class="image is-64x64" >
@@ -95,7 +95,7 @@
             </p>
           </div>
         </div>
-      </article> 
+      </article>  -->
      
       <div class="media-content">
         <div class="content is-medium item-sdy" style="padding: 2rem 0rem 2rem 0rem;">
@@ -106,15 +106,15 @@
       </div>
       <div class="columns">
         <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
-          border-radius: 6px;
+     
           padding: 13px 20px;
           font-size: 14px;
           color: #000;
           background-color: #fff;
   
-          transition: all .5s">{{uploads.created}}</span></div>
+          ">{{uploads.created}}</span></div>
         <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
-          border-radius: 6px;
+     
           padding: 13px 20px;
           font-size: 14px;
           color: #000;
@@ -122,16 +122,16 @@
   
           transition: all .5s">{{uploads.category.name}}</span></div>
         <div class="column"> <span class="box" style=" border: 2px solid #E1E8EE;
-          border-radius: 6px;
+     
           padding: 13px 20px;
           font-size: 14px;
           color: #000;
           background-color: #fff;
   
-          transition: all .5s">{{uploads.typefile.name}}</span></div>
+          ">{{uploads.typefile.name}}</span></div>
         <div class="column">
           <span class="box" style=" border: 2px solid #E1E8EE;
-          border-radius: 6px;
+     
           padding: 13px 20px;
           font-size: 14px;
           color: #000;

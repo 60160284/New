@@ -10,22 +10,27 @@
 
         <form method="post">
 
-            <div class="columns">
-                <div class="field">
-                    <label class="label">
-                        {% csrf_token %}
-                        {{form | crispy}}
-                        <a href="{% url 'password_reset' %}">
-                            <p class="">ลืมรหัสผ่าน</p>
-                        </a>
-                        <input type="submit" class="btn btn-primary" value="ยืนยัน">
-                    </label>
+          
+
+                <div class="col-md-4">
+                    {% csrf_token %}
+                    {{form | crispy}}
+                    <a href="{% url 'password_reset' %}">
+                        <p class="">ลืมรหัสผ่าน</p>
+                    </a>
+
+                    <a href="{% url 'signUp' %}">
+                        <label class="naccount">สร้างบัญชีใหม่</label>
+                    </a>
+
+                    <input type="submit" class="btn btn-primary" value="ยืนยัน">
 
                 </div>
-            </div>
-            <div class="field">
-                <a href="{% url 'signUp' %}"><label class="naccount">สร้างบัญชีใหม่</label></a>
-            </div>
+          
+
+
+
+
 
         </form>
 
